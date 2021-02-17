@@ -7,11 +7,11 @@ using namespace std;
 
 int main()
 {
-  setlocale(LC_ALL, "Ru");
+  
 
   MyString a;
   MyString b;
-  a= "cum";
+  a= "foo";
   b=  "ss";
   a+=b;
   

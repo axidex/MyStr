@@ -1,80 +1,132 @@
-#define _CRT_SECURE_NO_WARNINGS
+
 #include "mainwin.h"
 #include <iostream>
-#include <cstring>
+
 
 using namespace std;
 
-String::String()
-{
-  Str = 0;
-  Length = 0;
-}
 
-String::String(const char* ptr)
-  : Length(strlen(ptr)), Str(new char[Length + 1])
-{
-  strcpy(Str, ptr);
-}
 
-String::String(const String& t)
-  : Length(strlen(t.Str)), Str(new char[Length + 1])
+MyString::MyString()
 {
-  strcpy(Str, t.Str);
-}
-String& String::operator = (String& t)
-{
-  swap(Length, t.Length);
-  swap(Str, t.Str);
-  return *this;
-}
-
-String& String::operator += (const String& t)
-{
-  int newLength = Length + t.Length;
-  char *newStr = new char[newLength + 1];
-  strcpy(newStr, Str);
-  strcat(newStr, t.Str);
-  delete[] Str;
-  Str = newStr;
-  Length = newLength;
-  return *this;
-}
-
-bool String::operator == (const String& t) const
-{
-  return Length == t.Length && strcmp(Str, t.Str) == 0;
-}
-
-bool String::operator != (const String& t) const
-{
-  return !(operator == (t));
-}
-
-bool String::is_empty() const
-{
-  return Str == 0 || Str[0] == '\0';
-}
-
-const char* String::getStr() const
-{
-  return Str;
-}
-
-int String::getLength() const
-{
-  return Length;
-}
-
-ostream & String::show(ostream & os) const
-{
-  return os << (Str ? Str : "");
-}
-
-String::~String()
-{
-  Length = 0;
-  delete[] Str;
   Str = nullptr;
+  Length = 0;
+}
+MyString::MyString(const char *ptr)
+{
+  for (int i = 0 ;;i++)
+  {
+    if(ptr[i] == '\0')
+    {
+      Length = i;
+      break;
+    }
+
+  }
+  Str = new char[Length];
+  for (int i = 0;i< Length;i++)
+  {
+    Str[i]=ptr[i];
+  } 
+}
+
+
+MyString::MyString(const MyString &other)
+{
+  this->Length = other.Length;
+
+
+  this->Str = new char[Length];
+  
+
+  for (int i = 0;i<Length;i++)
+  {
+    this->Str[i] = other.Str[i];
+  }
+}
+MyString& MyString:: operator = (const MyString &other)
+{
+  this->Length=other.Length;
+  if (this->Str != nullptr)
+  {
+    delete[] this->Str;
+  }
+  
+  this->Str = new char[Length];
+  for (int i = 0;i<Length;i++)
+  {
+    this->Str[i]=other.Str[i];
+  }
+  
+  return *this;
+}
+
+bool MyString::operator == (const MyString &other)
+{
+  if (this->Length != other.Length)
+  {
+    return false;
+  }
+  else
+  {
+    for (int i = 0 ; i < this->Length;i++)
+    {
+      if (this->Str[i] != other.Str[i])
+      {
+        return false ;
+            
+      }
+
+    }
+    return true;
+  }
+}
+bool MyString::operator != (const MyString &other)
+{
+  return !(*this==other); 
+}
+void MyString::operator +=(const MyString &other)
+{
+  int j = 0;
+  int temp =  this->Length ;
+  this->Length+=other.Length ;
+  char *tempo ;
+  tempo = new char [temp];
+  for (int i = 0;i<temp;i++)
+  {
+    tempo[i] = this->Str[i];
+  }
+
+  if (this->Str != nullptr)
+  {
+    delete[] this->Str;
+  }
+  this->Str = new char [Length];
+  for (int i = 0;i<temp;i++)
+  {
+    this->Str[i] = tempo[i];
+  }
+  
+  for (int i = temp;i<Length;i++)
+  { 
+    
+    this->Str[i]= other.Str[j];
+    j++;
+    
+  }
+  
+  
+  delete[] tempo;
+  tempo = nullptr;  
+}
+friend std::ostream& operator<< (std::ostream &out, const MyString &other)
+{
+    out << other.Str;
+    return out;
+}
+ 
+MyString::~MyString()
+{
+  delete[] Str;
 }
 
