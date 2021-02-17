@@ -1,4 +1,3 @@
-
 #include "mainwin.h"
 #include <iostream>
 
@@ -119,12 +118,15 @@ void MyString::operator +=(const MyString &other)
   delete[] tempo;
   tempo = nullptr;  
 }
-friend std::ostream& operator<< (std::ostream &out, const MyString &other)
+const char* MyString::GetStr() const
+{
+  return Str;
+}
+ostream & operator<<(std::ostream &out, const MyString &other)
 {
     out << other.Str;
     return out;
 }
- 
 MyString::~MyString()
 {
   delete[] Str;

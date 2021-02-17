@@ -12,30 +12,16 @@ char *Str;
 
 public:
 MyString();
-
 MyString(const char *ptr);
-
 MyString(const MyString &other);
-
-
+const char* GetStr() const;
 MyString& operator = (const MyString &other);
-
 bool operator == (const MyString &other);
-
 bool operator != (const MyString &other);
-
 void operator +=(const MyString &other);
-
-
-friend std::ostream& operator<< (std::ostream &out, const MyString &other)
-{
-    
-    out << other.Str;
-    return out;
-}
-
-
-
+friend std::ostream& operator<< (std::ostream &out, const MyString &other);
 ~MyString();
 
 };
+
+

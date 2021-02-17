@@ -1,31 +1,20 @@
 #include "mainwin.cpp"
 #include <iostream>
-#include <conio.h>
-#include <cstring>
+
 
 using namespace std;
 
 int main()
 {
   
-
+  
   MyString a;
   MyString b;
   a= "foo";
   b=  "ss";
   a+=b;
   
-  cout << a << endl;
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
+  cout << a << endl; 
+  system("PAUSE");       
 return 0;
 }
