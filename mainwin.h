@@ -13,11 +13,12 @@ char *Str;
 public:
 MyString();
 MyString(const char *ptr);
+
 MyString(const MyString &other);
 const char* GetStr() const;
 const int GetLength() const;
 const int GetSize() const;
-MyString& operator = (const MyString &other);
+ MyString& operator = (const MyString &other);
 bool operator == (const MyString &other);
 bool operator != (const MyString &other);
 void operator +=(const MyString &other);

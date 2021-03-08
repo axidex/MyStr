@@ -140,5 +140,6 @@ const int MyString::GetSize() const
 MyString::~MyString()
 {
   delete[] Str;
+  Str = nullptr;
 }
 

@@ -12,6 +12,7 @@ int main()
   MyString b;
   a= "foo";
   b=  "ss";
+  
   a=b;
   if (a == b)
   {
