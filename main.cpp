@@ -18,7 +18,9 @@ int main()
     cout << "true"<<endl;
   }
   
-  
+  cout << a.GetSize()<< endl;
+  cout << a.GetLength()<< endl;
+  cout << sizeof("ss")<<endl;
   system("PAUSE");       
 return 0;
 }

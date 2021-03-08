@@ -37,8 +37,8 @@ MyString::MyString(const MyString &other)
   if (other.Str)
   {
     this->Str = new char[Length];
-    
-    
+
+
     for (int i = 0;i<Length;i++)
     {
       this->Str[i] = other.Str[i];
@@ -128,6 +128,14 @@ ostream & operator<<(std::ostream &out, const MyString &other)
 {
     out << other.Str;
     return out;
+}
+const int MyString::GetLength() const 
+{
+  return Length;
+}
+const int MyString::GetSize() const 
+{
+  return Length+1;
 }
 MyString::~MyString()
 {
