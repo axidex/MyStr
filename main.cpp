@@ -12,9 +12,13 @@ int main()
   MyString b;
   a= "foo";
   b=  "ss";
-  a+=b;
+  a=b;
+  if (a == b)
+  {
+    cout << "true"<<endl;
+  }
   
-  cout << a << endl; 
+  
   system("PAUSE");       
 return 0;
 }

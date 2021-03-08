@@ -34,13 +34,15 @@ MyString::MyString(const MyString &other)
 {
   this->Length = other.Length;
 
-
-  this->Str = new char[Length];
-  
-
-  for (int i = 0;i<Length;i++)
+  if (other.Str)
   {
-    this->Str[i] = other.Str[i];
+    this->Str = new char[Length];
+    
+    
+    for (int i = 0;i<Length;i++)
+    {
+      this->Str[i] = other.Str[i];
+    }
   }
 }
 MyString& MyString:: operator = (const MyString &other)
